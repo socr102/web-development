@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>>{{ q }} - Moongle Search Results </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+          integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+            integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h2>Search results for <strong>{{ q }}</strong></h2>
+    </header>
+    <div>
+        <ol class=" list-group">
+            {% for res in results %}
+            <li class="list-group-item" style="border: none">
+                <h4><a href="{{ res[2] }}">{{ res[0] }} - {{ res[1] }}</a></h4>
+                <p class="text-muted font-italic"> {{ res[2] }} </p>
+                <blockquote class="text-muted small"><p>... {{ res[3] }} ...</p></blockquote>
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+
+    <footer style="
+   position:fixed;
+   left:0;
+   bottom:0;
+   height:2.5em;
+   width:100%;
+   background:#21272b;
+   color: white
+">
+        <h5 style="padding-left: 2em"> Dimitrios Zaikis - 8 | Advanced Topics in Database | MSc in Data and Web Science
+            |
+            School of Informatics, AUTh</h5>
+    </footer>
+</div>
+
+</body>
+</html>

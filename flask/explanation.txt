@@ -1,0 +1,19 @@
+Scrapy
+
+Fetch tags from url like this
+
+https://www.chemspider.com/Chemical-Structure.1906.html
+
+for as many drugs as possible. 
+Desired schema would be
+ scrapped_info ={
+            'name' : chem["name"],
+            'chem_id' : chem["chem_id"],
+            'smiles' : chem["smiles"],
+            'molecular_formula' : chem["mol_formula"],
+            'synonyms' : chem["synonyms"],
+            'tags':chem["tags"]
+        }
+
+Tags will act as a new node in Neo4J with a relationship to the Drug node based
+on name

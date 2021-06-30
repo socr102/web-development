@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Moongle</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    <script>
+        function myFunction() {
+            var x = document.getElementById("upload-div");
+
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body style="background-color: #EAE6DA;">
+
+
+<div class="container"
+     style="
+	 	position: fixed;
+	 	top: 50%;
+	 	left: 20%;
+	 	margin-top: -9em;
+	 	margin-left: -15em;">
+
+    <div class="alert-success form-inline" role="alert">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <form class="form-inline" action="{{ url_for('search') }}" method="POST" style="padding:1em;">
+        <h1>MOONGLE</h1>
+        <div class="form-group">
+            <label class="sr-only" for="searchInput">Search query</label>
+            <input type="text" name="search" class="form-control" id="searchInput"
+                   placeholder="Search the database..." style="width: 54em">
+        </div>
+        <br>
+        <div class="form-group">
+            <label class="sr-only" for="model">Vector model</label>
+            <select id="model" name="model" class="form-control">
+                <option value="">-Select vector representation-</option>
+                <option value="tfidf">TfIDF (Frequency Vector)</option>
+                <option value="count">Binary Count (One-Hot Vector)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="metric">Distance metrics</label>
+            <select id="metric" name="metric" class="form-control">
+                <option value="">-Select distance metric-</option>
+                <option value="minkowski">Minkowski</option>
+                <option value="canberra">Canberra</option>
+                <option value="rogerstanimoto">Roger-Tanimoto</option>
+                <option value="cosine">Cosine</option>
+                <option value="jaccard">Jaccaard</option>
+                <option value="fidelity">Fidelity</option>
+                <option value="sqeuclidean">Squared Euclidiean</option>
+                <option value="jensenshannon">Jensen-Shannon</option>
+                <option value="avg_combi">Average of L1 and Linf norms</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="sr-only" for="topk">Number of results</label>
+            <input id="topk" type="number" class="form-control" name="topk" value="topk-nr"
+                   placeholder="Number of results" min="1">
+        </div>
+        <!--		<input type="submit" class="btn btn-default" value="Search">-->
+        <button type="submit" class="btn btn-default" value="Search"><span class="glyphicon glyphicon-search"></span>
+            Search
+        </button>
+        <p><br><a href="#" onclick="myFunction()">Add new document to database</a></p>
+    </form>
+
+
+    <div id="upload-div" style="display: none; padding: 1em;">
+        <h3>Add Document to MongoDB @ localhost</h3>
+        <form class="form-inline" id="upload-form" action="/uploader" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <input class="btn btn-default" type="file" name="file" accept="text/*" multiple/>
+            </div>
+            <div class="form-group">
+                <button class="file btn btn-lg btn-primary" type="submit" value="UPLOAD">PUSH</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+<footer style="
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:2.5em;
+   width:100%;
+   background:#21272b;
+   color: white
+">
+    <h5 style="padding-left: 2em"> Dimitrios Zaikis - 8 | Advanced Topics in Database | MSc in Data and Web Science |
+        School of Informatics, AUTh</h5>
+</footer>
+</body>
+</html>
