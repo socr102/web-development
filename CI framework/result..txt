@@ -1,0 +1,28 @@
+Login Page
+The login will be checked according to the 'users' table (like 'partner' == true && mail = $ x && $ pass = $ x).
+Home page
+Average response time: Messages sent to partners and their response time will be taken and averaged.
+Payments section: A new table called "payouts" will be opened and if the reservation is approved, it will be added as "waiting", "canceled" to the rejected. For the payment completed part, when we make a manual payment from our own management panel, we update it as 'completed' again.
+3.Edit profile page
+Profile and password change sections on the right will be opened and closed as seen in the design.
+Readonly inputs cannot be changed by the partner, we can only change them manually. (Those inputs that will not be processed in the backend)
+Messaging page
+The messaging table will be a simple messaging system already in the database. What I am messaging on the left is like the message content on the right.
+The Send a message to XX section under Bi, on the reservation detail page, when you click the "Send Message" button in the guest section, it will go to the messages page and that modal will open to the guest who can send a message.
+Reservation detail page
+A column named verified_user will be opened in the 'users' table and the default will be 'false'. We will do it from our own panel. If true, the value will appear as "Approved user" in the guest section.
+Equipment fees, commission etc. There is a function in our current backend that fetches them. If you have a problem, you can write to me.
+Booking confirmation or rejection part: Here, when the partner confirms the reservation, the status in the "bookings" table will be "completed" and the guest will be sent an e-mail. (With the message the partner entered below). If it refuses, the status will be 'canceled' and the mail will go again with the message below.
+Add and edit caravan page
+The page for adding and editing caravans will be the same, only the calendar will be in the edit section.
+The page that will work with JS will be tabs on the left side without refreshing. The preview will be filled according to the data entered in the form in the middle and previev on the right.
+Form controller will be done on both JS and backend sides
+Google Recaptcha V3 will be used.
+We have Mapbox available KEY for the location part. LAT and LONG data taken from there will be saved in DB.
+Minimum 8 images will be uploaded in the gallery section and one of them will be able to choose as the cover image. These uploaded images will be uploaded to the "gallery" column in the "cars" table as 6,7,8,9. (The script's visual loading logic is a bit weird, but it's enough for you to do it in the most appropriate way.)
+For the policies section, create a column such as 'policies' in the 'cars' table and save the policy chosen by the partner. (flex, middle, strict)
+Minimum rental period: Any selection less than this period will not be in the reservation section on our site. So if it is a minimum of 4 days, the user will not be able to choose 3 days on the calendar. Likewise, it will be controlled in the back-end.
+When it is published, "status" will be "pending" again, we will confirm it from our panel.
+CALENDAR (The most important part)
+We have a problem that is present in all booking scripts, but unfortunately our script developers do not write. As with Airbnb etc. sites, the partner will have a calendar for each caravan. He will be able to open or close the date he wants. If there is a reservation on the date it opens, it will not be able to open it. Likewise, in the form of a strip to write the name of the reservation on the calendar.
+WE DO NOT RECOMMEND THAT IT IS WRITTEN FROM ZERO. IT WILL BE BETTER IF READY SCRIPTS ARE USED.
